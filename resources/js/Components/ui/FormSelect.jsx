@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "react-select";
+import Select, { components } from "react-select";
 
 import { FormField } from "./FormField";
 
@@ -36,6 +36,15 @@ const getSelectClassNames = (compact) => ({
         ].join(" "),
 });
 
+// Lenis só é bloqueado dentro da lista de opções, para o scroll da página
+// continuar funcionando normalmente sobre o campo do select
+const MenuList = (props) => (
+    <components.MenuList
+        {...props}
+        innerProps={{ ...props.innerProps, "data-lenis-prevent": true }}
+    />
+);
+
 export const FormSelect = ({
     id,
     name = id,
@@ -53,23 +62,22 @@ export const FormSelect = ({
 
     return (
         <FormField id={id} name={name} label={label} errors={errors}>
-            <div data-lenis-prevent>
-                <Select
-                    inputId={id}
-                    instanceId={id}
-                    name={name}
-                    aria-required="true"
-                    aria-invalid={Boolean(errors?.[name])}
-                    aria-describedby={errors?.[name] ? `${id}-error` : undefined}
-                    options={options}
-                    value={selectedOption}
-                    onChange={(option) => onChange(name, option)}
-                    placeholder={placeholder}
-                    classNames={getSelectClassNames(compact)}
-                    unstyled
-                    isSearchable={searchable}
-                />
-            </div>
+            <Select
+                inputId={id}
+                instanceId={id}
+                name={name}
+                aria-required="true"
+                aria-invalid={Boolean(errors?.[name])}
+                aria-describedby={errors?.[name] ? `${id}-error` : undefined}
+                options={options}
+                value={selectedOption}
+                onChange={(option) => onChange(name, option)}
+                placeholder={placeholder}
+                classNames={getSelectClassNames(compact)}
+                components={{ MenuList }}
+                unstyled
+                isSearchable={searchable}
+            />
         </FormField>
     );
 };
