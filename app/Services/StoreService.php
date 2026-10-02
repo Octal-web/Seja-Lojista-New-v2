@@ -14,6 +14,8 @@ use RuntimeException;
 
 class StoreService
 {
+    public const CEP_PADRAO = '00000-000';
+
     private const CLIENTE = 'newmoveis';
     private const PROJETO = 'sejalojista26';
     private const COD_MARCA_ETAPA_1 = 'expansao';
@@ -44,9 +46,11 @@ class StoreService
      */
     public function create(array $data): array
     {
-        $cepData = $this->fetchCepData($data['cep']);
+        $cepData = $data['cep'] === self::CEP_PADRAO
+            ? []
+            : $this->fetchCepData($data['cep']);
 
-        if (!$cepData) {
+        if ($cepData === null) {
             throw ValidationException::withMessages([
                 'cep' => 'Por favor, informe um CEP válido.',
             ]);
@@ -189,7 +193,7 @@ class StoreService
         $etapa1->forceFill([
             'nome' => $data['nome'],
             'email' => $data['email'],
-            'uf' => $cepData['uf'] ?? $data['estado_uf'],
+            'uf' => $cepData['uf'] ?? $data['estado_uf'] ?? null,
             'telefone' => $data['telefone'],
             'celular' => null,
             'cpf' => null,
@@ -285,7 +289,9 @@ class StoreService
             $data['cargo'] ?? null,
         );
 
-        $this->appendObservation($observations, 'Possui sócio', $data['possui_socio'] ? 'Sim' : 'Não');
+        if (isset($data['possui_socio'])) {
+            $this->appendObservation($observations, 'Possui sócio', $data['possui_socio'] ? 'Sim' : 'Não');
+        }
 
         if (empty($observations)) {
             return null;

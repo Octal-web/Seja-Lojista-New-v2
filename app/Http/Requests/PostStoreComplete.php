@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Services\StoreService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostStoreComplete extends FormRequest
@@ -21,10 +22,13 @@ class PostStoreComplete extends FormRequest
      */
     public function rules(): array
     {
+        // O formulário do topo (banner) não pede profissão, sócio nem CEP.
+        $opcionalNoTopo = $this->isFormularioTopo() ? 'nullable' : 'required';
+
         return [
             'nome' => 'required|string|max:255',
-            'cargo' => 'required|string|max:255',
-            'possui_socio' => 'required|boolean',
+            'cargo' => "{$opcionalNoTopo}|string|max:255",
+            'possui_socio' => "{$opcionalNoTopo}|boolean",
 
             'email' => 'required|email|max:255',
             'telefone' => 'required|celular_com_ddd',
@@ -40,6 +44,21 @@ class PostStoreComplete extends FormRequest
             'grupo' => 'nullable|string|max:255',
             'anuncio' => 'nullable|string|max:255',
         ];
+    }
+
+    /**
+     * O CEP é obrigatório no banco; o formulário do topo não o coleta.
+     */
+    protected function prepareForValidation(): void
+    {
+        if ($this->isFormularioTopo() && blank($this->input('cep'))) {
+            $this->merge(['cep' => StoreService::CEP_PADRAO]);
+        }
+    }
+
+    protected function isFormularioTopo(): bool
+    {
+        return trim((string) $this->input('posicao_formulario')) !== 'Rodapé';
     }
 
     /**

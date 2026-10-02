@@ -53,11 +53,8 @@ export const StoreFirstForm = () => {
         telefone: "",
         telefone_confirmacao: "",
         email: "",
-        cep: "",
         politica: false,
         expectativa_investimento: "",
-        possui_socio: "",
-        cargo: "",
 
         origem: "",
         campanha: "",
@@ -100,10 +97,7 @@ export const StoreFirstForm = () => {
         "nome",
         "telefone",
         "email",
-        "cep",
-        "cargo",
         "expectativa_investimento",
-        "possui_socio",
         "politica",
     ]);
 
@@ -207,11 +201,8 @@ export const StoreFirstForm = () => {
                     "telefone",
                     "telefone_confirmacao",
                     "email",
-                    "cep",
                     "politica",
                     "expectativa_investimento",
-                    "possui_socio",
-                    "cargo",
                 );
 
                 setTermsVisible(false);
@@ -219,7 +210,7 @@ export const StoreFirstForm = () => {
         });
     };
 
-    const inputClassName = `input-style`;
+    const inputClassName = `input-style max-md:!h-10`;
 
     const ErrorMessage = ({ field }) => {
         if (!errors[field]) return null;
@@ -242,7 +233,7 @@ export const StoreFirstForm = () => {
             ref={sectionRef}
             id="orcamento"
             aria-labelledby="lojista-topo-lojista-form-title"
-            className="w-full scroll-mt-32 bg-white p-5 shadow-2xl shadow-black/30 sm:p-8"
+            className="w-full scroll-mt-32 max-md:[&_label:not([id])]:!mb-1 bg-black/30 p-5 shadow-2xl shadow-black/30 backdrop-blur-lg sm:p-8"
         >
             <div className="flex flex-col gap-5 md:gap-6">
                     <div ref={contentRef}>
@@ -269,7 +260,7 @@ export const StoreFirstForm = () => {
                             <div className="flex flex-col gap-4">
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     <div className="w-full sm:col-span-2">
-                                        <label htmlFor="lojista-topo-nome">Nome*</label>
+                                        <label htmlFor="lojista-topo-nome" className="!text-white">Nome*</label>
 
                                         <input
                                             id="lojista-topo-nome"
@@ -295,7 +286,7 @@ export const StoreFirstForm = () => {
                                     </div>
 
                                     <div className="w-full">
-                                        <label htmlFor="lojista-topo-telefone">
+                                        <label htmlFor="lojista-topo-telefone" className="!text-white">
                                             Telefone*
                                         </label>
 
@@ -330,7 +321,7 @@ export const StoreFirstForm = () => {
                                     
 
                                     <div className="w-full">
-                                        <label htmlFor="lojista-topo-telefone_confirmacao">
+                                        <label htmlFor="lojista-topo-telefone_confirmacao" className="!text-white">
                                             Confirme seu telefone*
                                         </label>
 
@@ -366,7 +357,7 @@ export const StoreFirstForm = () => {
 
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     <div className="w-full sm:col-span-2">
-                                        <label htmlFor="lojista-topo-email">E-mail*</label>
+                                        <label htmlFor="lojista-topo-email" className="!text-white">E-mail*</label>
 
                                         <input
                                             id="lojista-topo-email"
@@ -391,67 +382,10 @@ export const StoreFirstForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full">
-                                        <label htmlFor="lojista-topo-cargo">
-                                            Profissão*
-                                        </label>
 
-                                        <input
-                                            id="lojista-topo-cargo"
-                                            type="text"
-                                            name="cargo"
-                                            value={data.cargo}
-                                            onChange={handleChange}
-                                            placeholder="Sua profissão"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(errors.cargo)}
-                                            aria-describedby={
-                                                errors.cargo
-                                                    ? "lojista-topo-cargo-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-cargo-error">
-                                            <ErrorMessage field="cargo" />
-                                        </div>
-                                    </div>
-
-
-                                    <div className="w-full">
-                                        <label htmlFor="lojista-topo-cep">CEP*</label>
-
-                                        <InputMask
-                                            id="lojista-topo-cep"
-                                            type="text"
-                                            name="cep"
-                                            mask="_____-___"
-                                            replacement={{
-                                                _: /\d/,
-                                            }}
-                                            value={data.cep}
-                                            onChange={handleChange}
-                                            placeholder="Seu CEP"
-                                            inputMode="numeric"
-                                            autoComplete="postal-code"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(errors.cep)}
-                                            aria-describedby={
-                                                errors.cep
-                                                    ? "lojista-topo-cep-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-cep-error">
-                                            <ErrorMessage field="cep" />
-                                        </div>
-                                    </div>
                                 </div>
 
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-4 [&_label]:!text-white">
                                     <FormSelect
                                         id="lojista-topo-expectativa_investimento"
                                         name="expectativa_investimento"
@@ -460,15 +394,7 @@ export const StoreFirstForm = () => {
                                         value={data.expectativa_investimento}
                                         errors={errors}
                                         onChange={handleSelectChange}
-                                    />
-                                    <FormSelect
-                                        id="lojista-topo-possui_socio"
-                                        name="possui_socio"
-                                        label="Você terá um sócio investidor?*"
-                                        options={partnerOptions}
-                                        value={data.possui_socio}
-                                        errors={errors}
-                                        onChange={handleSelectChange}
+                                        compact
                                     />
                                 </div>
                             </div>
@@ -587,11 +513,11 @@ export const StoreFirstForm = () => {
                                         "
                                     />
 
-                                    <div className="text-xs leading-snug sm:text-sm flex items-center gap-1.5 ">
+                                    <div className="text-xs leading-snug sm:text-sm flex items-center gap-1.5 !text-white">
                                         <label
                                             id="lojista-topo-politica-label"
                                             htmlFor="lojista-topo-politica"
-                                            className="cursor-pointer !mb-0 font-normal"
+                                            className="cursor-pointer !mb-0 font-normal !text-white"
                                         >
                                             Aceito os{" "}
                                         </label>

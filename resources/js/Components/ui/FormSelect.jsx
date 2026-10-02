@@ -3,10 +3,11 @@ import Select from "react-select";
 
 import { FormField } from "./FormField";
 
-const selectClassNames = {
+const getSelectClassNames = (compact) => ({
     control: ({ isFocused }) =>
         [
             "!min-h-[48px] md:!min-h-[52px] w-full",
+            compact ? "max-md:!min-h-10" : "",
             "border bg-white",
             "px-5 text-sm text-custom-gray",
             "shadow-none rounded-none",
@@ -33,7 +34,7 @@ const selectClassNames = {
                   ? "bg-gray-100"
                   : "bg-white",
         ].join(" "),
-};
+});
 
 export const FormSelect = ({
     id,
@@ -45,6 +46,7 @@ export const FormSelect = ({
     onChange,
     searchable = false,
     placeholder = "Selecione",
+    compact = false,
 }) => {
     const selectedOption =
         options.find((option) => option.value === value) ?? null;
@@ -63,7 +65,7 @@ export const FormSelect = ({
                     value={selectedOption}
                     onChange={(option) => onChange(name, option)}
                     placeholder={placeholder}
-                    classNames={selectClassNames}
+                    classNames={getSelectClassNames(compact)}
                     unstyled
                     isSearchable={searchable}
                 />
