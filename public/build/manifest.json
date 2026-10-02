@@ -1,0 +1,206 @@
+{
+  "_DefaultLayout-Dr5ZPVkZ.js": {
+    "file": "assets/DefaultLayout-Dr5ZPVkZ.js",
+    "name": "DefaultLayout",
+    "imports": [
+      "resources/js/app.jsx",
+      "_favicon-Ag0IG1wh.js"
+    ],
+    "assets": [
+      "assets/main-bg-MeZjr7bI.jpg",
+      "assets/logo-octal-C3DBiTKk.png",
+      "assets/logo-new-white-BuygliSW.png"
+    ]
+  },
+  "_PolicyContent-DPwkvdN6.js": {
+    "file": "assets/PolicyContent-DPwkvdN6.js",
+    "name": "PolicyContent",
+    "imports": [
+      "resources/js/app.jsx",
+      "_DefaultLayout-Dr5ZPVkZ.js"
+    ]
+  },
+  "_favicon-Ag0IG1wh.js": {
+    "file": "assets/favicon-Ag0IG1wh.js",
+    "name": "favicon",
+    "assets": [
+      "assets/logo-new-CvzP7cIT.png",
+      "assets/favicon-B4YB5a-K.ico"
+    ]
+  },
+  "_index-Ce7lPzfH.js": {
+    "file": "assets/index-Ce7lPzfH.js",
+    "name": "index",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Erro.jsx": {
+    "file": "assets/Erro-FrUWW__g.js",
+    "name": "Erro",
+    "src": "resources/js/Pages/Erro.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_favicon-Ag0IG1wh.js"
+    ]
+  },
+  "resources/js/Pages/Home.jsx": {
+    "file": "assets/Home-Drg_bvl9.js",
+    "name": "Home",
+    "src": "resources/js/Pages/Home.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-Ce7lPzfH.js",
+      "_DefaultLayout-Dr5ZPVkZ.js",
+      "_favicon-Ag0IG1wh.js"
+    ],
+    "css": [
+      "assets/Home-By9dwpI9.css"
+    ],
+    "assets": [
+      "assets/main-bg-mobile-DWTdM-uF.jpg",
+      "assets/banner-home-KQZqq5ub.mp4",
+      "assets/timeline-01-kVy4K8LA.jpg",
+      "assets/timeline-02-uEtC3U18.jpg",
+      "assets/timeline-03-C-q6lvKU.jpg",
+      "assets/timeline-04-C1eQhzVg.jpg",
+      "assets/timeline-05-Uv_ZYqOM.jpg",
+      "assets/timeline-06-DrCepdc2.jpg",
+      "assets/unicasa-fabrica-CjjkLjYj.jpg",
+      "assets/slide1-CJ6BwH8t.jpg",
+      "assets/slide2-CYVXXxxp.jpg",
+      "assets/slide3-CFEkHwyp.jpg",
+      "assets/shopkeeper-1-Dor3Gmuh.jpg"
+    ]
+  },
+  "resources/js/Pages/LojistasConcluido.jsx": {
+    "file": "assets/LojistasConcluido-n3SA86Wn.js",
+    "name": "LojistasConcluido",
+    "src": "resources/js/Pages/LojistasConcluido.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_DefaultLayout-Dr5ZPVkZ.js",
+      "_index-Ce7lPzfH.js",
+      "_favicon-Ag0IG1wh.js"
+    ]
+  },
+  "resources/js/Pages/PoliticaCookies.jsx": {
+    "file": "assets/PoliticaCookies-COy2bevi.js",
+    "name": "PoliticaCookies",
+    "src": "resources/js/Pages/PoliticaCookies.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_DefaultLayout-Dr5ZPVkZ.js",
+      "_PolicyContent-DPwkvdN6.js",
+      "_favicon-Ag0IG1wh.js"
+    ]
+  },
+  "resources/js/Pages/PoliticaPrivacidade.jsx": {
+    "file": "assets/PoliticaPrivacidade-GHuhO9my.js",
+    "name": "PoliticaPrivacidade",
+    "src": "resources/js/Pages/PoliticaPrivacidade.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_DefaultLayout-Dr5ZPVkZ.js",
+      "_PolicyContent-DPwkvdN6.js",
+      "_favicon-Ag0IG1wh.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-DHSI3Xvl.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Erro.jsx",
+      "resources/js/Pages/Home.jsx",
+      "resources/js/Pages/LojistasConcluido.jsx",
+      "resources/js/Pages/PoliticaCookies.jsx",
+      "resources/js/Pages/PoliticaPrivacidade.jsx"
+    ],
+    "css": [
+      "assets/app-BlFizmns.css"
+    ]
+  },
+  "resources/js/imgs/content/display/business-legacy.jpg": {
+    "file": "assets/business-legacy-E4NZXfAt.jpg",
+    "src": "resources/js/imgs/content/display/business-legacy.jpg"
+  },
+  "resources/js/imgs/content/display/main-bg-mobile.jpg": {
+    "file": "assets/main-bg-mobile-DWTdM-uF.jpg",
+    "src": "resources/js/imgs/content/display/main-bg-mobile.jpg"
+  },
+  "resources/js/imgs/content/display/main-bg.jpg": {
+    "file": "assets/main-bg-MeZjr7bI.jpg",
+    "src": "resources/js/imgs/content/display/main-bg.jpg"
+  },
+  "resources/js/imgs/content/display/unicasa-fabrica.jpg": {
+    "file": "assets/unicasa-fabrica-CjjkLjYj.jpg",
+    "src": "resources/js/imgs/content/display/unicasa-fabrica.jpg"
+  },
+  "resources/js/imgs/content/stores/slide1.jpg": {
+    "file": "assets/slide1-CJ6BwH8t.jpg",
+    "src": "resources/js/imgs/content/stores/slide1.jpg"
+  },
+  "resources/js/imgs/content/stores/slide2.jpg": {
+    "file": "assets/slide2-CYVXXxxp.jpg",
+    "src": "resources/js/imgs/content/stores/slide2.jpg"
+  },
+  "resources/js/imgs/content/stores/slide3.jpg": {
+    "file": "assets/slide3-CFEkHwyp.jpg",
+    "src": "resources/js/imgs/content/stores/slide3.jpg"
+  },
+  "resources/js/imgs/content/testimonies/shopkeeper-1.jpg": {
+    "file": "assets/shopkeeper-1-Dor3Gmuh.jpg",
+    "src": "resources/js/imgs/content/testimonies/shopkeeper-1.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-01.jpg": {
+    "file": "assets/timeline-01-kVy4K8LA.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-01.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-02.jpg": {
+    "file": "assets/timeline-02-uEtC3U18.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-02.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-03.jpg": {
+    "file": "assets/timeline-03-C-q6lvKU.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-03.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-04.jpg": {
+    "file": "assets/timeline-04-C1eQhzVg.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-04.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-05.jpg": {
+    "file": "assets/timeline-05-Uv_ZYqOM.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-05.jpg"
+  },
+  "resources/js/imgs/content/timeline/timeline-06.jpg": {
+    "file": "assets/timeline-06-DrCepdc2.jpg",
+    "src": "resources/js/imgs/content/timeline/timeline-06.jpg"
+  },
+  "resources/js/imgs/favicon.ico": {
+    "file": "assets/favicon-B4YB5a-K.ico",
+    "src": "resources/js/imgs/favicon.ico"
+  },
+  "resources/js/imgs/site/img/logo-new-white.png": {
+    "file": "assets/logo-new-white-BuygliSW.png",
+    "src": "resources/js/imgs/site/img/logo-new-white.png"
+  },
+  "resources/js/imgs/site/img/logo-new.png": {
+    "file": "assets/logo-new-CvzP7cIT.png",
+    "src": "resources/js/imgs/site/img/logo-new.png"
+  },
+  "resources/js/imgs/site/img/logo-octal.png": {
+    "file": "assets/logo-octal-C3DBiTKk.png",
+    "src": "resources/js/imgs/site/img/logo-octal.png"
+  },
+  "resources/js/video/site/banner-home.mp4": {
+    "file": "assets/banner-home-KQZqq5ub.mp4",
+    "src": "resources/js/video/site/banner-home.mp4"
+  }
+}

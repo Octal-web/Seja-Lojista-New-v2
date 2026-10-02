@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="49" viewBox="0 0 49 49">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_1837" data-name="Retângulo 1837" width="49" height="49" transform="translate(275 7522)"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_máscara_93" data-name="Grupo de máscara 93" transform="translate(-275 -7522)" clip-path="url(#clip-path)">
+    <g id="crosshair" transform="translate(278.071 7525.072)">
+      <circle id="Elipse_65" data-name="Elipse 65" cx="21.429" cy="21.429" r="21.429" transform="translate(0)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <line id="Linha_6" data-name="Linha 6" x1="8.571" transform="translate(34.286 21.429)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <line id="Linha_7" data-name="Linha 7" x1="8.571" transform="translate(0 21.429)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <line id="Linha_8" data-name="Linha 8" y1="8.571" transform="translate(21.429)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <line id="Linha_9" data-name="Linha 9" y1="8.571" transform="translate(21.429 34.286)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+    </g>
+  </g>
+</svg>

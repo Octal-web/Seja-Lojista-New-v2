@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_1835" data-name="Retângulo 1835" width="45" height="45" transform="translate(1024 7235)"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_máscara_92" data-name="Grupo de máscara 92" transform="translate(-1024 -7235)" clip-path="url(#clip-path)">
+    <g id="shelving-unit" transform="translate(1029.357 7236.072)">
+      <path id="Caminho_2794" data-name="Caminho 2794" d="M31.429,31.429V25a2.143,2.143,0,0,0-2.143-2.143H25A2.143,2.143,0,0,0,22.857,25v6.429" transform="translate(-14.286 -10)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2795" data-name="Caminho 2795" d="M42.857,54.286V47.857a2.143,2.143,0,0,0-2.143-2.143H36.429a2.143,2.143,0,0,0-2.143,2.143v6.429" transform="translate(-17.143 -15.714)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2796" data-name="Caminho 2796" d="M57.143,48.571V5.714" transform="translate(-22.857 -5.714)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2797" data-name="Caminho 2797" d="M11.429,34.286H45.714" transform="translate(-11.429 -12.857)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2798" data-name="Caminho 2798" d="M11.429,57.143H45.714" transform="translate(-11.429 -18.571)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2799" data-name="Caminho 2799" d="M11.429,5.714V48.571" transform="translate(-11.429 -5.714)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+      <path id="Caminho_2800" data-name="Caminho 2800" d="M11.429,11.429H45.714" transform="translate(-11.429 -7.143)" fill="none" stroke="#727272" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.857"/>
+    </g>
+  </g>
+</svg>

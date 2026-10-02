@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .input-style {
+        @apply h-[48px] md:h-[52px] w-full border border-[#D3D3D3] bg-white px-5 text-sm text-custom-gray placeholder:text-[#9B9B9B] outline-none ring-0 transition-colors duration-200 focus:border-primary/60 focus:ring-0;
+    }
+
+    .button-style {
+        @apply relative mx-auto flex min-h-[50px] md:min-h-[60px] w-fit items-center justify-center gap-1 sm:gap-3 uppercase bg-primary text-sm sm:text-base md:text-lg xl:text-xl font-normal text-white transition-colors duration-300 hover:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-60;
+    }
+}
+
+@layer base {
+    label {
+        @apply mb-1.5 md:mb-3 block text-xs md:text-sm 2xl:text-base font-bold !text-[#675247];
+    }
+}
