@@ -20,7 +20,7 @@ class StoreService
     private const PROJETO = 'sejalojista26';
     private const COD_MARCA_ETAPA_1 = 'expansao';
     private const COD_MARCA_ETAPA_2 = 'newmoveis';
-    private const CANAL_ATENDIMENTO_ID = 40;
+    private const CANAL_ATENDIMENTO_ID = 38;
 
     private const CAPITAIS_DISPONIVEIS = [
         2 => 'ENTRE R$ 500.000,00 A R$ 600.000,00',
