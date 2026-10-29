@@ -210,6 +210,7 @@ export const StoreFirstForm = () => {
                     "telefone",
                     "telefone_confirmacao",
                     "email",
+                    "cep",
                     "politica",
                     "expectativa_investimento",
                 );
