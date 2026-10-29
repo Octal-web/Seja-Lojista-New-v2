@@ -6,10 +6,10 @@ import { InputMask } from "@react-input/mask";
 import { Text } from "../ui/Text";
 import { Title } from "../ui/Title";
 
+import { useFormTracking } from "@/Hooks/useFormTracking";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FormSelect } from "../ui/FormSelect";
-import { useFormTracking } from "@/Hooks/useFormTracking";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,9 +34,7 @@ export const StoreFirstForm = () => {
     const termsRef = useRef(null);
 
     const [phoneMask, setPhoneMask] = useState("(__) ____-____");
-    const [phoneConfirmMask, setPhoneConfirmMask] = useState(
-        "(__) ____-____",
-    );
+    const [phoneConfirmMask, setPhoneConfirmMask] = useState("(__) ____-____");
     const [termsVisible, setTermsVisible] = useState(false);
 
     const {
@@ -53,6 +51,7 @@ export const StoreFirstForm = () => {
         telefone: "",
         telefone_confirmacao: "",
         email: "",
+        cep: "",
         politica: false,
         expectativa_investimento: "",
 
@@ -97,6 +96,7 @@ export const StoreFirstForm = () => {
         "nome",
         "telefone",
         "email",
+        "cep",
         "expectativa_investimento",
         "politica",
     ]);
@@ -192,7 +192,8 @@ export const StoreFirstForm = () => {
         event.preventDefault();
 
         post(route("Lojistas.enviar"), {
-            preserveScroll: (page) => Object.keys(page.props.errors ?? {}).length > 0,
+            preserveScroll: (page) =>
+                Object.keys(page.props.errors ?? {}).length > 0,
 
             onSuccess: () => {
                 window.dataLayer = window.dataLayer || [];
@@ -244,266 +245,307 @@ export const StoreFirstForm = () => {
             className="w-full scroll-mt-32 max-md:[&_label:not([id])]:!mb-1 bg-black/30 p-5 shadow-2xl shadow-black/30 backdrop-blur-lg sm:p-8"
         >
             <div className="flex flex-col gap-5 md:gap-6">
-                    <div ref={contentRef}>
-                        <Title
-                            id="lojista-topo-lojista-form-title"
-                            as="h2"
-                            variant="card"
-                            weight="bold"
-                            className=" text-primary"
-                        >
-                            Quero abrir minha loja New
-                        </Title>
-                    </div>
+                <div ref={contentRef}>
+                    <Title
+                        id="lojista-topo-lojista-form-title"
+                        as="h2"
+                        variant="card"
+                        weight="bold"
+                        className=" text-primary"
+                    >
+                        Quero abrir minha loja New
+                    </Title>
+                </div>
 
-                    <div ref={formWrapperRef}>
-                        <form
-                            onSubmit={handleSubmit}
-                            noValidate
-                            id="form_New_Sejalojista26'_topo"
-                            aria-labelledby="lojista-topo-lojista-form-title"
-                            aria-describedby="lojista-topo-lojista-form-description"
-                            aria-busy={processing}
-                        >
-                            <div className="flex flex-col gap-4">
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    <div className="w-full sm:col-span-2">
-                                        <label htmlFor="lojista-topo-nome" className="!text-white">Nome*</label>
+                <div ref={formWrapperRef}>
+                    <form
+                        onSubmit={handleSubmit}
+                        noValidate
+                        id="form_New_Sejalojista26'_topo"
+                        aria-labelledby="lojista-topo-lojista-form-title"
+                        aria-describedby="lojista-topo-lojista-form-description"
+                        aria-busy={processing}
+                    >
+                        <div className="flex flex-col gap-4">
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="w-full sm:col-span-2">
+                                    <label
+                                        htmlFor="lojista-topo-nome"
+                                        className="!text-white"
+                                    >
+                                        Nome*
+                                    </label>
 
-                                        <input
-                                            id="lojista-topo-nome"
-                                            type="text"
-                                            name="nome"
-                                            value={data.nome}
-                                            onChange={handleChange}
-                                            placeholder="Seu nome completo"
-                                            autoComplete="name"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(errors.nome)}
-                                            aria-describedby={
-                                                errors.nome
-                                                    ? "lojista-topo-nome-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-nome-error">
-                                            <ErrorMessage field="nome" />
-                                        </div>
-                                    </div>
-
-                                    <div className="w-full">
-                                        <label htmlFor="lojista-topo-telefone" className="!text-white">
-                                            Telefone*
-                                        </label>
-
-                                        <InputMask
-                                            id="lojista-topo-telefone"
-                                            type="tel"
-                                            name="telefone"
-                                            mask={phoneMask}
-                                            replacement={{
-                                                _: /\d/,
-                                            }}
-                                            value={data.telefone}
-                                            onChange={handleChange}
-                                            placeholder="Seu telefone + DDD"
-                                            autoComplete="tel"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(
-                                                errors.telefone,
-                                            )}
-                                            aria-describedby={
-                                                errors.telefone
-                                                    ? "lojista-topo-telefone-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-telefone-error">
-                                            <ErrorMessage field="telefone" />
-                                        </div>
-                                    </div>
-                                    
-
-                                    <div className="w-full">
-                                        <label htmlFor="lojista-topo-telefone_confirmacao" className="!text-white">
-                                            Confirme seu telefone*
-                                        </label>
-
-                                        <InputMask
-                                            id="lojista-topo-telefone_confirmacao"
-                                            type="tel"
-                                            name="telefone_confirmacao"
-                                            mask={phoneConfirmMask}
-                                            replacement={{
-                                                _: /\d/,
-                                            }}
-                                            value={data.telefone_confirmacao}
-                                            onChange={handleChange}
-                                            placeholder="Confirme seu telefone"
-                                            autoComplete="tel"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(
-                                                errors.telefone_confirmacao,
-                                            )}
-                                            aria-describedby={
-                                                errors.telefone_confirmacao
-                                                    ? "lojista-topo-telefone-confirmacao-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-telefone-confirmacao-error">
-                                            <ErrorMessage field="telefone_confirmacao" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    <div className="w-full sm:col-span-2">
-                                        <label htmlFor="lojista-topo-email" className="!text-white">E-mail*</label>
-
-                                        <input
-                                            id="lojista-topo-email"
-                                            type="email"
-                                            name="email"
-                                            value={data.email}
-                                            onChange={handleChange}
-                                            placeholder="Seu e-mail"
-                                            autoComplete="email"
-                                            aria-required="true"
-                                            aria-invalid={Boolean(errors.email)}
-                                            aria-describedby={
-                                                errors.email
-                                                    ? "lojista-topo-email-error"
-                                                    : undefined
-                                            }
-                                            className={inputClassName}
-                                        />
-
-                                        <div id="lojista-topo-email-error">
-                                            <ErrorMessage field="email" />
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                                <div className="flex flex-col gap-4 [&_label]:!text-white">
-                                    <FormSelect
-                                        id="lojista-topo-expectativa_investimento"
-                                        name="expectativa_investimento"
-                                        label="Qual o seu orçamento disponível para investir?*"
-                                        options={investmentOptions}
-                                        value={data.expectativa_investimento}
-                                        errors={errors}
-                                        onChange={handleSelectChange}
-                                        compact
+                                    <input
+                                        id="lojista-topo-nome"
+                                        type="text"
+                                        name="nome"
+                                        value={data.nome}
+                                        onChange={handleChange}
+                                        placeholder="Seu nome completo"
+                                        autoComplete="name"
+                                        aria-required="true"
+                                        aria-invalid={Boolean(errors.nome)}
+                                        aria-describedby={
+                                            errors.nome
+                                                ? "lojista-topo-nome-error"
+                                                : undefined
+                                        }
+                                        className={inputClassName}
                                     />
+
+                                    <div id="lojista-topo-nome-error">
+                                        <ErrorMessage field="nome" />
+                                    </div>
+                                </div>
+
+                                <div className="w-full">
+                                    <label
+                                        htmlFor="lojista-topo-telefone"
+                                        className="!text-white"
+                                    >
+                                        Telefone*
+                                    </label>
+
+                                    <InputMask
+                                        id="lojista-topo-telefone"
+                                        type="tel"
+                                        name="telefone"
+                                        mask={phoneMask}
+                                        replacement={{
+                                            _: /\d/,
+                                        }}
+                                        value={data.telefone}
+                                        onChange={handleChange}
+                                        placeholder="Seu telefone + DDD"
+                                        autoComplete="tel"
+                                        aria-required="true"
+                                        aria-invalid={Boolean(errors.telefone)}
+                                        aria-describedby={
+                                            errors.telefone
+                                                ? "lojista-topo-telefone-error"
+                                                : undefined
+                                        }
+                                        className={inputClassName}
+                                    />
+
+                                    <div id="lojista-topo-telefone-error">
+                                        <ErrorMessage field="telefone" />
+                                    </div>
+                                </div>
+
+                                <div className="w-full">
+                                    <label
+                                        htmlFor="lojista-topo-telefone_confirmacao"
+                                        className="!text-white"
+                                    >
+                                        Confirme seu telefone*
+                                    </label>
+
+                                    <InputMask
+                                        id="lojista-topo-telefone_confirmacao"
+                                        type="tel"
+                                        name="telefone_confirmacao"
+                                        mask={phoneConfirmMask}
+                                        replacement={{
+                                            _: /\d/,
+                                        }}
+                                        value={data.telefone_confirmacao}
+                                        onChange={handleChange}
+                                        placeholder="Confirme seu telefone"
+                                        autoComplete="tel"
+                                        aria-required="true"
+                                        aria-invalid={Boolean(
+                                            errors.telefone_confirmacao,
+                                        )}
+                                        aria-describedby={
+                                            errors.telefone_confirmacao
+                                                ? "lojista-topo-telefone-confirmacao-error"
+                                                : undefined
+                                        }
+                                        className={inputClassName}
+                                    />
+
+                                    <div id="lojista-topo-telefone-confirmacao-error">
+                                        <ErrorMessage field="telefone_confirmacao" />
+                                    </div>
                                 </div>
                             </div>
 
-                            <input
-                                type="hidden"
-                                name="origem"
-                                value={data.origem}
-                            />
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="w-full">
+                                    <label
+                                        htmlFor="lojista-topo-email"
+                                        className="!text-white"
+                                    >
+                                        E-mail*
+                                    </label>
 
-                            <input
-                                type="hidden"
-                                name="campanha"
-                                value={data.campanha}
-                            />
+                                    <input
+                                        id="lojista-topo-email"
+                                        type="email"
+                                        name="email"
+                                        value={data.email}
+                                        onChange={handleChange}
+                                        placeholder="Seu e-mail"
+                                        autoComplete="email"
+                                        aria-required="true"
+                                        aria-invalid={Boolean(errors.email)}
+                                        aria-describedby={
+                                            errors.email
+                                                ? "lojista-topo-email-error"
+                                                : undefined
+                                        }
+                                        className={inputClassName}
+                                    />
 
-                            <input
-                                type="hidden"
-                                name="grupo"
-                                value={data.grupo}
-                            />
-
-                            <input
-                                type="hidden"
-                                name="anuncio"
-                                value={data.anuncio}
-                            />
-
-                            <input
-                                type="hidden"
-                                name="entrada"
-                                value={data.entrada}
-                            />
-
-                            <input
-                                type="hidden"
-                                name="posicao_formulario"
-                                value={data.posicao_formulario}
-                            />
-
-                            <div className="mt-5">
-                                <div
-                                    id="lojista-topo-lojista-terms"
-                                    ref={termsRef}
-                                    aria-hidden={!termsVisible}
-                                    className={[
-                                        "overflow-hidden bg-neutral-100 text-[10px] leading-tight text-custom-gray transition-all duration-300",
-                                        termsVisible ? "mb-3" : "mb-0",
-                                    ].join(" ")}
-                                    style={{
-                                        maxHeight: termsVisible
-                                            ? `${termsRef.current?.scrollHeight ?? 0}px`
-                                            : "0px",
-                                    }}
-                                >
-                                    <div className="px-5 py-3">
-                                        <p>
-                                            Ao enviar, você confirma a
-                                            veracidade das informações prestadas
-                                            neste formulário, bem como autoriza
-                                            a UNICASA a verificar tais dados.
-                                            Esteja ciente que o preenchimento de
-                                            formulário não implica em nenhum
-                                            compromisso para ambas as partes, em
-                                            especial, não os obriga à assinatura
-                                            de qualquer documento ou
-                                            compromisso, sendo as informações
-                                            aqui fornecidas meramente cadastrais
-                                            e estritamente comerciais. Além
-                                            disso, você concorda com a
-                                            utilização dos seus dados pela
-                                            fabricante e lojas autorizadas. A
-                                            Unicasa se compromete a tratar seus
-                                            dados pessoais dispostos no
-                                            formulário em conformidade com a Lei
-                                            Geral de Proteção de Dados, Lei nº
-                                            13.709/2018, sendo eliminados de
-                                            maneira segura após o tempo
-                                            necessário. Para mais informações,
-                                            consulte nossa Política de
-                                            Privacidade, disponível no site.
-                                        </p>
+                                    <div id="lojista-topo-email-error">
+                                        <ErrorMessage field="email" />
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-3">
-                                    <input
-                                        id="lojista-topo-politica"
-                                        type="checkbox"
-                                        name="politica"
-                                        checked={data.politica}
+                                <div className="w-full">
+                                    <label
+                                        htmlFor="lojista-topo-cep"
+                                        className="!text-white"
+                                    >
+                                        CEP*
+                                    </label>
+
+                                    <InputMask
+                                        id="lojista-topo-cep"
+                                        type="text"
+                                        name="cep"
+                                        mask="_____-___"
+                                        replacement={{
+                                            _: /\d/,
+                                        }}
+                                        value={data.cep}
                                         onChange={handleChange}
+                                        placeholder="Seu CEP"
+                                        inputMode="numeric"
+                                        autoComplete="postal-code"
                                         aria-required="true"
-                                        aria-labelledby="lojista-topo-politica-label lojista-topo-politica-termos-button lojista-topo-politica-conjuncao lojista-topo-politica-privacidade-link"
-                                        aria-invalid={Boolean(errors.politica)}
+                                        aria-invalid={Boolean(errors.cep)}
                                         aria-describedby={
-                                            errors.politica
-                                                ? "lojista-topo-politica-error"
+                                            errors.cep
+                                                ? "lojista-topo-cep-error"
                                                 : undefined
                                         }
-                                        className="
+                                        className={inputClassName}
+                                    />
+
+                                    <div id="lojista-topo-cep-error">
+                                        <ErrorMessage field="cep" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-4 [&_label]:!text-white">
+                                <FormSelect
+                                    id="lojista-topo-expectativa_investimento"
+                                    name="expectativa_investimento"
+                                    label="Qual o seu orçamento disponível para investir?*"
+                                    options={investmentOptions}
+                                    value={data.expectativa_investimento}
+                                    errors={errors}
+                                    onChange={handleSelectChange}
+                                    compact
+                                />
+                            </div>
+                        </div>
+
+                        <input
+                            type="hidden"
+                            name="origem"
+                            value={data.origem}
+                        />
+
+                        <input
+                            type="hidden"
+                            name="campanha"
+                            value={data.campanha}
+                        />
+
+                        <input type="hidden" name="grupo" value={data.grupo} />
+
+                        <input
+                            type="hidden"
+                            name="anuncio"
+                            value={data.anuncio}
+                        />
+
+                        <input
+                            type="hidden"
+                            name="entrada"
+                            value={data.entrada}
+                        />
+
+                        <input
+                            type="hidden"
+                            name="posicao_formulario"
+                            value={data.posicao_formulario}
+                        />
+
+                        <div className="mt-5">
+                            <div
+                                id="lojista-topo-lojista-terms"
+                                ref={termsRef}
+                                aria-hidden={!termsVisible}
+                                className={[
+                                    "overflow-hidden bg-neutral-100 text-[10px] leading-tight text-custom-gray transition-all duration-300",
+                                    termsVisible ? "mb-3" : "mb-0",
+                                ].join(" ")}
+                                style={{
+                                    maxHeight: termsVisible
+                                        ? `${termsRef.current?.scrollHeight ?? 0}px`
+                                        : "0px",
+                                }}
+                            >
+                                <div className="px-5 py-3">
+                                    <p>
+                                        Ao enviar, você confirma a veracidade
+                                        das informações prestadas neste
+                                        formulário, bem como autoriza a UNICASA
+                                        a verificar tais dados. Esteja ciente
+                                        que o preenchimento de formulário não
+                                        implica em nenhum compromisso para ambas
+                                        as partes, em especial, não os obriga à
+                                        assinatura de qualquer documento ou
+                                        compromisso, sendo as informações aqui
+                                        fornecidas meramente cadastrais e
+                                        estritamente comerciais. Além disso,
+                                        você concorda com a utilização dos seus
+                                        dados pela fabricante e lojas
+                                        autorizadas. A Unicasa se compromete a
+                                        tratar seus dados pessoais dispostos no
+                                        formulário em conformidade com a Lei
+                                        Geral de Proteção de Dados, Lei nº
+                                        13.709/2018, sendo eliminados de maneira
+                                        segura após o tempo necessário. Para
+                                        mais informações, consulte nossa
+                                        Política de Privacidade, disponível no
+                                        site.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <input
+                                    id="lojista-topo-politica"
+                                    type="checkbox"
+                                    name="politica"
+                                    checked={data.politica}
+                                    onChange={handleChange}
+                                    aria-required="true"
+                                    aria-labelledby="lojista-topo-politica-label lojista-topo-politica-termos-button lojista-topo-politica-conjuncao lojista-topo-politica-privacidade-link"
+                                    aria-invalid={Boolean(errors.politica)}
+                                    aria-describedby={
+                                        errors.politica
+                                            ? "lojista-topo-politica-error"
+                                            : undefined
+                                    }
+                                    className="
                                             relative mt-0.5 size-5 shrink-0
                                             cursor-pointer appearance-none
                                             border border-[#D3D3D3] bg-white
@@ -519,94 +561,92 @@ export const StoreFirstForm = () => {
                                             focus:ring-0
                                             focus:ring-offset-0
                                         "
-                                    />
+                                />
 
-                                    <div className="text-xs leading-snug sm:text-sm flex items-center gap-1.5 !text-white">
-                                        <label
-                                            id="lojista-topo-politica-label"
-                                            htmlFor="lojista-topo-politica"
-                                            className="cursor-pointer !mb-0 font-normal !text-white"
-                                        >
-                                            Aceito os{" "}
-                                        </label>
+                                <div className="text-xs leading-snug sm:text-sm flex items-center gap-1.5 !text-white">
+                                    <label
+                                        id="lojista-topo-politica-label"
+                                        htmlFor="lojista-topo-politica"
+                                        className="cursor-pointer !mb-0 font-normal !text-white"
+                                    >
+                                        Aceito os{" "}
+                                    </label>
 
-                                        <button
-                                            id="lojista-topo-politica-termos-button"
-                                            type="button"
-                                            aria-expanded={termsVisible}
-                                            aria-controls="lojista-topo-lojista-terms"
-                                            onClick={() => {
-                                                setTermsVisible(
-                                                    (current) => !current,
-                                                );
-                                            }}
-                                            className="font-normal underline underline-offset-2 transition-opacity hover:opacity-70"
-                                        >
-                                            Termos de Uso
-                                        </button>
+                                    <button
+                                        id="lojista-topo-politica-termos-button"
+                                        type="button"
+                                        aria-expanded={termsVisible}
+                                        aria-controls="lojista-topo-lojista-terms"
+                                        onClick={() => {
+                                            setTermsVisible(
+                                                (current) => !current,
+                                            );
+                                        }}
+                                        className="font-normal underline underline-offset-2 transition-opacity hover:opacity-70"
+                                    >
+                                        Termos de Uso
+                                    </button>
 
-                                        <span id="lojista-topo-politica-conjuncao">
-                                            {" "}
-                                            e a{" "}
-                                        </span>
+                                    <span id="lojista-topo-politica-conjuncao">
+                                        {" "}
+                                        e a{" "}
+                                    </span>
 
-                                        <a
-                                            id="lojista-topo-politica-privacidade-link"
-                                            href={route(
-                                                "Politicas.privacidade",
-                                            )}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="font-normal underline underline-offset-2 transition-opacity hover:opacity-70"
-                                        >
-                                            Política de Privacidade
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div id="lojista-topo-politica-error">
-                                    <ErrorMessage field="politica" />
+                                    <a
+                                        id="lojista-topo-politica-privacidade-link"
+                                        href={route("Politicas.privacidade")}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="font-normal underline underline-offset-2 transition-opacity hover:opacity-70"
+                                    >
+                                        Política de Privacidade
+                                    </a>
                                 </div>
                             </div>
 
-                            {recentlySuccessful && (
-                                <Text
-                                    as="p"
-                                    variant="none"
-                                    weight="medium"
-                                    role="status"
-                                    aria-live="polite"
-                                    className="mt-5 text-xs md:text-sm leading-relaxed text-green-700"
-                                >
-                                    Seus dados foram enviados com sucesso. Nossa
-                                    equipe entrará em contato.
-                                </Text>
-                            )}
+                            <div id="lojista-topo-politica-error">
+                                <ErrorMessage field="politica" />
+                            </div>
+                        </div>
 
-                            <button
-                                type="submit"
-                                disabled={processing}
-                                className="button-style !mx-0 w-full px-3 mt-5 !text-sm md:!text-base"
+                        {recentlySuccessful && (
+                            <Text
+                                as="p"
+                                variant="none"
+                                weight="medium"
+                                role="status"
+                                aria-live="polite"
+                                className="mt-5 text-xs md:text-sm leading-relaxed text-green-700"
                             >
-                                {processing ? (
-                                    <>
-                                        <span
-                                            aria-hidden="true"
-                                            className="absolute size-5 animate-spin rounded-full border-2 border-primary/30 border-t-primary"
-                                        />
+                                Seus dados foram enviados com sucesso. Nossa
+                                equipe entrará em contato.
+                            </Text>
+                        )}
 
-                                        <span className="opacity-0">
-                                            Quero falar com a equipe de expansão
-                                        </span>
-                                    </>
-                                ) : (
-                                    <span>
+                        <button
+                            type="submit"
+                            disabled={processing}
+                            className="button-style !mx-0 w-full px-3 mt-5 !text-sm md:!text-base"
+                        >
+                            {processing ? (
+                                <>
+                                    <span
+                                        aria-hidden="true"
+                                        className="absolute size-5 animate-spin rounded-full border-2 border-primary/30 border-t-primary"
+                                    />
+
+                                    <span className="opacity-0">
                                         Quero falar com a equipe de expansão
                                     </span>
-                                )}
-                            </button>
-                        </form>
-                    </div>
+                                </>
+                            ) : (
+                                <span>
+                                    Quero falar com a equipe de expansão
+                                </span>
+                            )}
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
     );
